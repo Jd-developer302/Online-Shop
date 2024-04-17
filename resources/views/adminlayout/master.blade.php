@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('components.admin.header')
-<body>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
 
     <div class="wrapper">
@@ -24,6 +24,7 @@
 
  
 
+
     <!-- Vendor JS -->
     <script src="{{asset('admin_asset/js/vendors.min.js')}}"></script>
     <script src="{{asset('admin_asset/js/pages/chat-popup.js')}}"></script>
@@ -37,6 +38,6 @@
     <script src="{{asset('admin_asset/js/pages/dashboard.js')}}"></script>
  
 
-  @yield('scripts')
+
 </body>
 </html>
