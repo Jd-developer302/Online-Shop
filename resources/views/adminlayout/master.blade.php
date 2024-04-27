@@ -36,6 +36,8 @@
     <!-- WebkitX Admin App -->
     <script src="{{asset('admin_asset/js/template.js')}}"></script>
     <script src="{{asset('admin_asset/js/pages/dashboard.js')}}"></script>
+    <script src="{{asset('admin_asset/js/pages/datatables.min.js')}}"></script>
+    <script src="{{asset('admin_asset/js/pages/data-table.js')}}"></script>
  
 
 

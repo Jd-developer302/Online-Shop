@@ -1,13 +1,26 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\admincontroller;
-use App\Http\Controllers\Admin\logincontroller;
 
 Route::get('/', function () {
-    return view('Admin.index');
+    return view('welcome');
 });
 
-/////////Admin Route///////////////////////////////////
-Route::get('/admin', [admincontroller::class, 'index']);
-Route::get('/login', [logincontroller::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('Admin.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/create', [CategoryController::class, 'create']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    
+});
+
+
+require __DIR__.'/auth.php';

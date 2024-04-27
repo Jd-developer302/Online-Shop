@@ -15,6 +15,9 @@ class AdminAuthenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // if ($request->user()->role!== 1) {
+        //     return redirect('Admin.index');
+        // }
         return $next($request);
     }
 }
