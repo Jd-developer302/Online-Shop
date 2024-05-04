@@ -8,10 +8,10 @@
             <div class="h-50 py-2">
                 <div class="d-flex justify-content-between">
                     <div class="mx-4 mb-5 mt-2">
-                        <h3 class="text-dark text-uppercase fw-bold">Create SubCategory</h3>
+                        <h3 class="text-dark text-uppercase fw-bold">Create Brand</h3>
                     </div>
                     <div class="mx-4 mb-5 mt-1">
-                        <a href="{{ route('Admin.Subcategory.index') }}" class="btn btn-primary">Back</a>
+                        <a href="#" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>
@@ -24,25 +24,13 @@
         <div class="col-lg-12 col-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Create SubCategory</h4>
+                    <h4 class="box-title">Create Brand</h4>
                 </div>
                 <!-- /.box-header -->
-                <form action="{{ route('Admin.Subcategory.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="#" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="form-label">Categroy</label>
-                                    <select class="form-select" name="category_id">
-                                        @if($categories->isNotEmpty())
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Name</label>
@@ -62,7 +50,7 @@
                                     <label class="form-label">Status</label>
                                     <select class="form-select" name="status">
                                         <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
+                                        <option value="block">Block</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,7 +59,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">
-                            <i class='bx bx-save'></i> Save Subcategory
+                            <i class='bx bx-save'></i> Save Brand
                         </button>
                     </div>
                 </form>

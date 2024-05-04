@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcatgeoryController;
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/dashboard/subcategory{id}', [SubcatgeoryController::class, 'destroy'])->name('Admin.Subcategory.destroy');
     Route::get('/dashboard/subcategory/{id}', [SubcatgeoryController::class, 'edit'])->name('Admin.Subcategory.edit');
     Route::put('/dashboard/subcategory/{id}', [SubcatgeoryController::class, 'update'])->name('Admin.Subcategory.update');
+    ////////Brand Routes/////////////////////
+    Route::get('/brand', [BrandController::class, 'index'])->name('Admin.Brand.index');
+    Route::get('/brand/create', [BrandController::class, 'create'])->name('Admin.Brand.create');
 });
 
 
