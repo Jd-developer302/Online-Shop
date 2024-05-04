@@ -38,7 +38,8 @@
     <script src="{{asset('admin_asset/js/pages/dashboard.js')}}"></script>
     <script src="{{asset('admin_asset/js/pages/datatables.min.js')}}"></script>
     <script src="{{asset('admin_asset/js/pages/data-table.js')}}"></script>
- 
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    
 
 
 </body>

@@ -8,10 +8,10 @@
             <div class="h-50 py-2">
                 <div class="d-flex justify-content-between">
                     <div class="mx-4 mb-5 mt-2">
-                        <h3 class="text-dark text-uppercase fw-bold">View Categories</h3>
+                        <h3 class="text-dark text-uppercase fw-bold">View SubCategories</h3>
                     </div>
                     <div class="mx-4 mb-5 mt-1">
-                        <a href="{{ route('Admin.Category.create') }}" class="btn btn-primary">+new</a>
+                        <a href="{{ route('Admin.Subcategory.create') }}" class="btn btn-primary">+new</a>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <div class="col-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Categories</h3>
+                    <h3 class="box-title">SubCategories</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -36,47 +36,46 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Image</th>
+                                    <th>Category Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($categories as $category)
+                                @forelse ($subcategories as $subcategory)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $subcategory->id }}</td>
+                                        <td>{{ $subcategory->name }}</td>
+                                        <td>{{ $subcategory->slug }}</td>
+                                        <td>{{ $subcategory->category->name }}</td>
+                                        
+                                        <td>{{ $subcategory->status == 1 ? 'Active' : 'Inactive' }}</td>
                                         <td>
-                                            @if($category->image)
-                                                <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="max-width: 50px;">
-                                            @else
-                                                No Image
-                                            @endif
-                                        </td>
-                                        <td>{{ $category->status == 1 ? 'Active' : 'Inactive' }}</td>
-                                        <td>
-                                            <a href="{{ route('Admin.Category.edit', ['id' => $category->id]) }}">
+                                            <a href="{{ route('Admin.Subcategory.edit', $subcategory->id) }}">
                                                 <i class='bx bx-edit-alt'></i>
                                             </a>
-                                            <a href="{{ route('Admin.Category.destroy', ['id' => $category->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $category->id }}').submit();">
+                                            <a href="{{ route('Admin.Subcategory.destroy', $subcategory->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $subcategory->id }}').submit();">
                                                 <i class='bx bx-trash-alt'></i>
                                             </a>
                                             
-                                            <form id="delete-form-{{ $category->id }}" action="{{ route('Admin.Category.destroy', ['id' => $category->id]) }}" method="POST" style="display: none;">
+                                            <form id="delete-form-{{ $subcategory->id }}" action="{{ route('Admin.Subcategory.destroy', $subcategory->id) }}" method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">No subcategories found.</td>
+                                    </tr>
+                                    @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Image</th>
+                                    <th>Category Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
