@@ -11,7 +11,7 @@
                         <h3 class="text-dark text-uppercase fw-bold">Create Brand</h3>
                     </div>
                     <div class="mx-4 mb-5 mt-1">
-                        <a href="#" class="btn btn-primary">Back</a>
+                        <a href="{{ route('Admin.Brand.index') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <h4 class="box-title">Create Brand</h4>
                 </div>
                 <!-- /.box-header -->
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('Admin.Brand.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="row">
@@ -50,7 +50,7 @@
                                     <label class="form-label">Status</label>
                                     <select class="form-select" name="status">
                                         <option value="active">Active</option>
-                                        <option value="block">Block</option>
+                                        <option value="inactive">Inactive</option>
                                     </select>
                                 </div>
                             </div>

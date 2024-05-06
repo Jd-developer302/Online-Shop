@@ -11,7 +11,7 @@
                         <h3 class="text-dark text-uppercase fw-bold">View Brands</h3>
                     </div>
                     <div class="mx-4 mb-5 mt-1">
-                        <a href="" class="btn btn-primary">+new</a>
+                        <a href="{{ route('Admin.Brand.create') }}" class="btn btn-primary">+new</a>
                     </div>
                 </div>
             </div>
@@ -36,20 +36,38 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Image</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach($brands as $brand)
+                                <tr>
+                                    <td>{{ $brand->id }}</td>
+                                    <td>{{ $brand->name }}</td>
+                                    <td>{{ $brand->slug }}</td>
+                                    <td>{{ $brand->status }}</td>
+                                    <td>
+                                        <a href="{{ route('Admin.Brand.edit', $brand->id) }}">
+                                            <i class='bx bx-edit-alt'></i>
+                                        </a>
+                                        <a href="{{ route('Admin.Brand.destroy', $brand->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $brand->id }}').submit();">
+                                            <i class='bx bx-trash-alt'></i>
+                                        </a>
+                                        
+                                        <form id="delete-form-{{ $brand->id }}" action="{{ route('Admin.Brand.destroy', $brand->id) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Image</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

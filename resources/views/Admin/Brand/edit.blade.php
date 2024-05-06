@@ -11,7 +11,7 @@
                         <h3 class="text-dark text-uppercase fw-bold">Edit Brand</h3>
                     </div>
                     <div class="mx-4 mb-5 mt-1">
-                        <a href="#" class="btn btn-primary">Back</a>
+                        <a href="{{ route('Admin.Brand.index') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <div class="box-header with-border">
                     <h4 class="box-title">Edit Brand</h4>
                 </div>
-                <form method="POST" action="{{ route('Admin.Category.update', $category->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('Admin.Brand.update', $brand->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="box-body">
@@ -34,29 +34,23 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" name="name" value="{{$category->name}}" class="form-control" >
+                                    <input type="text" name="name" value="{{$brand->name}}" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Slug</label>
-                                    <input type="text" name="slug" value="{{$category->slug}}" class="form-control" >
+                                    <input type="text" name="slug" value="{{$brand->slug}}" class="form-control" >
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">Image</label>
-                                    <input type="file" name="image" value="{{$category->image}}" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     <label class="form-label">Status</label>
                                     <select class="form-select" name="status">
-                                        <option value="1" {{ $category->status == '1' ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ $category->status == '0' ? 'selected' : '' }}>Inactive</option>
+                                        <option value="active" {{ $brand->status == 'active' ? 'selected' : '' }}>Active</option>
+                                        <option value="Inactive" {{ $brand->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                     </select>
                                 </div>
                             </div>

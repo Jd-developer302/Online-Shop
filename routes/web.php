@@ -36,6 +36,10 @@ Route::middleware('auth')->group(function () {
     ////////Brand Routes/////////////////////
     Route::get('/brand', [BrandController::class, 'index'])->name('Admin.Brand.index');
     Route::get('/brand/create', [BrandController::class, 'create'])->name('Admin.Brand.create');
+    Route::post('/dashboard/brand', [BrandController::class, 'store'])->name('Admin.Brand.store');
+    Route::delete('/dashboard/brand{id}', [BrandController::class, 'destroy'])->name('Admin.Brand.destroy');
+    Route::get('/dashboard/brand/{id}', [BrandController::class, 'edit'])->name('Admin.Brand.edit');
+    Route::put('/dashboard/brand/{id}', [BrandController::class, 'update'])->name('Admin.Brand.update');
 });
 
 
